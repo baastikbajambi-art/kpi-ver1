@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KPI M. Eko Saputra — Fakultas Humaniora</title>
+  <meta name="description" content="Dashboard Rapor Kinerja Individu M. Eko Saputra, Staff Dekan Humaniora." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+:root {
+  --bg: #0b1020;
+  --bg-soft: #f5f7fb;
+  --white: #ffffff;
+  --text: #17203a;
+  --muted: #5b6478;
+  --border: #e5e9f2;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-soft: rgba(37, 99, 235, .1);
+  --success: #15803d;
+  --warning: #b45309;
+  --danger: #b91c1c;
+  --radius: 18px;
+  --shadow: 0 18px 40px rgba(15, 23, 42, .08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg-soft);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: min(1180px, 92%);
+  margin: auto;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, .9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 78px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .2s ease;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+.nav-user {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-role {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Hero */
+.hero {
+  padding: 96px 0 80px;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(37, 99, 235, .18), transparent 45%),
+    linear-gradient(180deg, #f8fafc, #eef3ff);
+}
+
+.eyebrow {
+  display: inline-block;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  border-radius: 999px;
+}
+
+.hero h1 {
+  margin: 20px 0 16px;
+  font-size: clamp(36px, 6vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -1.5px;
+}
+
+.hero h1 span {
+  color: var(--primary);
+}
+
+.lead {
+  max-width: 620px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 32px;
+}
+
+.periode-select {
+  min-width: 220px;
+  padding: 14px 18px;
+  border: 1px solid #d8dfea;
+  border-radius: 999px;
+  background: var(--white);
+  font: inherit;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.periode-select:focus {
+  outline: 2px solid rgba(37, 99, 235, .3);
+  border-color: var(--primary);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 28px;
+  font: inherit;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .15s ease, background .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn:disabled {
+  opacity: .65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Section */
+.section {
+  padding: 78px 0;
+}
+
+.section-alt {
+  background: var(--white);
+}
+
+.section-head {
+  max-width: 720px;
+  margin-bottom: 38px;
+}
+
+.section-head h2 {
+  margin: 14px 0 10px;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.15;
+  letter-spacing: -1px;
+}
+
+.section-head p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Summary cards */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.summary-label {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.summary-card strong {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--primary);
+}
+
+.summary-note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Table */
+.table-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 28px 30px;
+  border-bottom: 1px solid var(--border);
+  background: #fbfcff;
+}
+
+.table-header h3 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.table-header p {
+  margin: 4px 0 0;
+  color: var(--muted);
+}
+
+.periode-badge {
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 9px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1080px;
+}
+
+thead th {
+  background: var(--bg);
+  color: #e2e8f0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 16px 18px;
+  white-space: nowrap;
+}
+
+tbody td {
+  padding: 18px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  font-size: 14px;
+}
+
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+tbody tr:hover {
+  background: #f8faff;
+}
+
+td.number {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+td.score {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 20px;
+}
+
+.table-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 30px;
+  border-top: 1px solid var(--border);
+  background: #fbfcff;
+}
+
+.table-footer p {
+  margin: 0;
+  font-weight: 600;
+}
+
+.table-footer strong {
+  color: var(--primary);
+}
+
+/* Info cards */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.info-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+}
+
+.info-card h3 {
+  margin: 0 0 10px;
+}
+
+.info-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Footer */
+.footer {
+  background: var(--bg);
+  color: #cbd5e1;
+  padding: 30px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 14px;
+}
+
+/* Status */
+.status-success {
+  color: var(--success);
+}
+
+.status-warning {
+  color: var(--warning);
+}
+
+.status-danger {
+  color: var(--danger);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  nav {
+    display: none;
+  }
+
+  .nav-user {
+    display: none;
+  }
+
+  .hero {
+    padding: 64px 0 54px;
+  }
+
+  .section {
+    padding: 58px 0;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        KPI<span>Humaniora</span>
+      </a>
+
+      <nav>
+        <a href="#ringkasan">Ringkasan</a>
+        <a href="#tabel-kpi">Tabel KPI</a>
+        <a href="#tentang">Tentang</a>
+      </nav>
+
+      <div class="nav-user">
+        <span class="user-name">M. Eko Saputra</span>
+        <span class="user-role">Staff Dekan Humaniora</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">Rapor Kinerja Individu</span>
+        <h1>Dashboard KPI<br /><span>M. Eko Saputra</span></h1>
+        <p class="lead">
+          Pantau capaian kinerja bulanan, indikator KPI, target, realisasi,
+          bobot, dan total KPIM Score secara transparan.
+        </p>
+
+        <div class="hero-actions">
+          <select id="periode" class="periode-select" aria-label="Pilih periode KPI">
+            <option value="">Memuat daftar periode...</option>
+          </select>
+
+          <button id="refresh-btn" class="btn btn-primary" type="button">
+            Muat Ulang Data
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="ringkasan" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Ringkasan</span>
+          <h2>Capaian Kinerja</h2>
+          <p>
+            Data di bawah diambil langsung dari tabel <strong>kpi_entries</strong> pada Supabase.
+          </p>
+        </div>
+
+        <div class="summary-grid">
+          <article class="summary-card">
+            <span class="summary-label">Total KPIM Score</span>
+            <strong id="total-score">0.00</strong>
+            <span class="summary-note">Akumulasi skor seluruh indikator</span>
+          </article>
+
+          <article class="summary-card">
+            <span class="summary-label">Jumlah Indikator</span>
+            <strong id="total-indicator">0</strong>
+            <span class="summary-note">Indikator pada periode terpilih</span>
+          </article>
+
+          <article class="summary-card">
+            <span class="summary-label">Rata-rata Capaian</span>
+            <strong id="average-achievement">0%</strong>
+            <span class="summary-note">Rata-rata achievement seluruh KPI</span>
+          </article>
+
+          <article class="summary-card">
+            <span class="summary-label">Status Kinerja</span>
+            <strong id="performance-status">Memuat...</strong>
+            <span class="summary-note">Berdasarkan total KPIM Score</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tabel-kpi" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Detail KPI</span>
+          <h2>Tabel Rapor Kinerja</h2>
+        </div>
+
+        <div class="table-card">
+          <div class="table-header">
+            <div>
+              <h3 id="employee-name">M. Eko Saputra</h3>
+              <p id="employee-position">Staff Dekan Humaniora</p>
+            </div>
+
+            <span id="periode-label" class="periode-badge">Memuat periode...</span>
+          </div>
+
+          <div class="table-wrap">
+            <table id="kpi-table">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Indicator</th>
+                  <th>Measurement</th>
+                  <th>Target</th>
+                  <th>Actual</th>
+                  <th>Ach</th>
+                  <th>Weight</th>
+                  <th>KPIM Score</th>
+                  <th>Keterangan</th>
+                </tr>
+              </thead>
+
+              <tbody id="kpi-table-body">
+                <tr>
+                  <td colspan="9" class="empty-state">Memuat data KPI...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-footer">
+            <p id="table-total">Total KPIM Score: <strong>0.00</strong></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tentang" class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Tentang</span>
+          <h2>Penilaian Kinerja</h2>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <h3>Target & Realisasi</h3>
+            <p>
+              Setiap indikator memiliki target dan realisasi. Nilai capaian
+              digunakan untuk menghitung kontribusi terhadap skor akhir.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Bobot KPI</h3>
+            <p>
+              Bobot menunjukkan tingkat prioritas setiap indikator. Semakin besar
+              bobot, semakin besar pengaruhnya pada total KPIM Score.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Skor Akhir</h3>
+            <p>
+              Total KPIM Score merupakan hasil akumulasi dari capaian tiap
+              indikator setelah dikalikan bobot masing-masing.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Fakultas Humaniora. Dashboard KPI.</p>
+      <p>Powered by Supabase & GitHub Pages</p>
+    </div>
+  </footer>
+
+  <!-- Supabase Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <script>
+// ============================================================
+// 1. KONFIGURASI SUPABASE
+// ============================================================
+const SUPABASE_URL = "https://hebcyohhmdvxtbfbolwj.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_ayWX3dxRxwFsTSHLkDFZ0w_t7dX67RC";
+
+// ============================================================
+// 2. ELEMEN DOM
+// ============================================================
+const periodeSelect = document.getElementById("periode");
+const refreshBtn = document.getElementById("refresh-btn");
+const totalScoreEl = document.getElementById("total-score");
+const totalIndicatorEl = document.getElementById("total-indicator");
+const avgAchievementEl = document.getElementById("average-achievement");
+const performanceStatusEl = document.getElementById("performance-status");
+const employeeNameEl = document.getElementById("employee-name");
+const employeePositionEl = document.getElementById("employee-position");
+const periodeLabelEl = document.getElementById("periode-label");
+const kpiTableBody = document.getElementById("kpi-table-body");
+const tableTotalEl = document.getElementById("table-total");
+const yearEl = document.getElementById("year");
+
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
+
+let currentEmployeeId = null;
+let supabaseClient = null;
+
+// ============================================================
+// 3. FORMAT TANGGAL KE NAMA BULAN INDONESIA
+// ============================================================
+
+function formatTanggalIndonesia(tanggal) {
+    if (!tanggal) {
+        return "-";
+    }
+
+    const date = new Date(tanggal);
+
+    if (isNaN(date.getTime())) {
+        return tanggal;
+    }
+
+    return date.toLocaleDateString("id-ID", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    });
+}
+
+// Format periode KPI, contoh: 2026-11 menjadi November 2026
+function formatPeriode(periode) {
+    if (!periode) return "-";
+
+    const tahunBulan = String(periode).substring(0, 7);
+    const bagian = tahunBulan.split("-");
+
+    const tahun = bagian[0];
+    const bulan = parseInt(bagian[1], 10);
+
+    const namaBulan = [
+        "Januari", "Februari", "Maret", "April",
+        "Mei", "Juni", "Juli", "Agustus",
+        "September", "Oktober", "November", "Desember"
+    ];
+
+    if (!tahun || bulan < 1 || bulan > 12 || isNaN(bulan)) {
+        return periode;
+    }
+
+    return namaBulan[bulan - 1] + " " + tahun;
+}
+}
+	  // ============================================================
+// 4. INISIALISASI SUPABASE
+// ============================================================
+
+if (typeof window.supabase === "undefined") {
+    console.error("Supabase SDK gagal dimuat.");
+} else {
+    supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+    );
+
+    console.log("Supabase berhasil diinisialisasi.");
+}
+	
+	  // ============================================================
+// 5. KONFIGURASI PEGAWAI
+// ============================================================
+
+const NAMA_PEGAWAI = "M. Eko Saputra";
+
+
+// ============================================================
+// 6. FORMAT ANGKA
+// ============================================================
+
+function formatAngka(nilai) {
+    return Number(nilai || 0).toFixed(2);
+}
+
+function formatPersen(nilai) {
+    return (Number(nilai || 0) * 100).toFixed(2) + "%";
+}
+
+
+// ============================================================
+// 7. PESAN STATUS
+// ============================================================
+
+function tampilkanPesan(pesan) {
+    kpiTableBody.innerHTML = "";
+
+    const row = document.createElement("tr");
+    const cell = document.createElement("td");
+
+    cell.colSpan = 9;
+    cell.className = "empty-state";
+    cell.textContent = pesan;
+
+    row.appendChild(cell);
+    kpiTableBody.appendChild(row);
+}
+
+
+// ============================================================
+// 8. MENGAMBIL DATA PEGAWAI
+// ============================================================
+
+async function loadEmployee() {
+
+    const { data, error } = await supabaseClient
+        .from("employees")
+        .select("id, nama, jabatan")
+        .eq("nama", NAMA_PEGAWAI)
+        .limit(1)
+        .maybeSingle();
+
+    if (error) {
+        throw new Error("Gagal mengambil data pegawai: " + error.message);
+    }
+
+    if (!data) {
+        throw new Error("Pegawai " + NAMA_PEGAWAI + " tidak ditemukan.");
+    }
+
+    currentEmployeeId = data.id;
+
+    employeeNameEl.textContent = data.nama;
+    employeePositionEl.textContent = data.jabatan || "-";
+
+    return data;
+}
+
+
+// ============================================================
+// 9. MENGAMBIL SEMUA DATA KPI
+// ============================================================
+
+async function loadAllKPI() {
+
+    const { data, error } = await supabaseClient
+        .from("kpi_entries")
+        .select(`
+            id,
+            employee_id,
+            periode,
+            no_urut,
+            indicator,
+            measurement,
+            target,
+            actual,
+            achievement,
+            weight,
+            kpi_score,
+            keterangan
+        `)
+        .eq("employee_id", currentEmployeeId)
+        .order("periode", { ascending: false })
+        .order("no_urut", { ascending: true });
+
+    if (error) {
+        throw new Error("Gagal mengambil data KPI: " + error.message);
+    }
+
+    return data || [];
+}
+
+
+// ============================================================
+// 10. MEMBUAT DAFTAR PERIODE
+// ============================================================
+
+function loadPeriode(data) {
+
+    const daftarPeriode = [
+        ...new Set(
+            data.map(item => String(item.periode).substring(0, 7))
+        )
+    ];
+
+    periodeSelect.innerHTML = "";
+
+    if (daftarPeriode.length === 0) {
+
+        const option = document.createElement("option");
+        option.value = "";
+        option.textContent = "Belum ada periode KPI";
+
+        periodeSelect.appendChild(option);
+        return;
+    }
+
+    daftarPeriode.forEach(periode => {
+
+        const option = document.createElement("option");
+
+        option.value = periode;
+        option.textContent = formatPeriode(periode);
+
+        periodeSelect.appendChild(option);
+    });
+
+    // Pilih periode terbaru
+    periodeSelect.value = daftarPeriode[0];
+}
+
+
+// ============================================================
+// 11. MENGAMBIL KPI BERDASARKAN PERIODE
+// ============================================================
+
+function filterKPI(data, periode) {
+
+    return data.filter(item =>
+        String(item.periode).substring(0, 7) === periode
+    );
+}
+
+
+// ============================================================
+// 12. MENAMPILKAN RINGKASAN KPI
+// ============================================================
+
+function renderSummary(data) {
+
+    const totalScore = data.reduce(
+        (total, item) => total + Number(item.kpi_score || 0),
+        0
+    );
+
+    const totalWeight = data.reduce(
+        (total, item) => total + Number(item.weight || 0),
+        0
+    );
+
+    const totalAchievement = data.reduce(
+        (total, item) => total + Number(item.achievement || 0),
+        0
+    );
+
+    const averageAchievement = data.length
+        ? totalAchievement / data.length
+        : 0;
+
+    totalScoreEl.textContent = formatAngka(totalScore);
+
+    totalIndicatorEl.textContent = data.length;
+
+    avgAchievementEl.textContent =
+        formatPersen(averageAchievement);
+
+    let status = "Belum ada data";
+
+    if (data.length > 0) {
+        status = totalScore >= totalWeight
+            ? "Tercapai"
+            : "Belum tercapai";
+    }
+
+    performanceStatusEl.textContent = status;
+
+    tableTotalEl.innerHTML = "";
+
+    const label = document.createElement("span");
+    label.textContent = "Total KPIM Score: ";
+
+    const strong = document.createElement("strong");
+    strong.textContent = formatAngka(totalScore);
+
+    tableTotalEl.appendChild(label);
+    tableTotalEl.appendChild(strong);
+}
+
+
+// ============================================================
+// 13. MENAMPILKAN TABEL KPI
+// ============================================================
+
+function renderTable(data) {
+
+    kpiTableBody.innerHTML = "";
+
+    if (!data.length) {
+        tampilkanPesan("Tidak ada data KPI pada periode ini.");
+        return;
+    }
+
+    data.forEach(item => {
+
+        const row = document.createElement("tr");
+
+        function tambahCell(nilai, className) {
+
+            const cell = document.createElement("td");
+
+            cell.textContent = nilai;
+
+            if (className) {
+                cell.className = className;
+            }
+
+            row.appendChild(cell);
+        }
+
+        tambahCell(item.no_urut, "number");
+
+        tambahCell(item.indicator);
+
+        tambahCell(item.measurement || "-");
+
+        const isPercentage =
+            String(item.measurement || "").toLowerCase() === "percentage";
+
+        tambahCell(
+            isPercentage
+                ? formatPersen(item.target)
+                : formatAngka(item.target)
+        );
+
+        tambahCell(
+            isPercentage
+                ? formatPersen(item.actual)
+                : formatAngka(item.actual)
+        );
+
+        tambahCell(formatPersen(item.achievement));
+
+        tambahCell(formatPersen(item.weight));
+
+        tambahCell(formatAngka(item.kpi_score), "score");
+
+        tambahCell(item.keterangan || "-");
+
+        kpiTableBody.appendChild(row);
+    });
+}
+
+
+// ============================================================
+// 14. UPDATE DASHBOARD BERDASARKAN PERIODE
+// ============================================================
+
+function updateDashboard(data) {
+
+    const periode = periodeSelect.value;
+
+    if (!periode) {
+
+        periodeLabelEl.textContent = "Tidak ada periode";
+
+        renderSummary([]);
+        renderTable([]);
+
+        return;
+    }
+
+    const dataPeriode = filterKPI(data, periode);
+
+    periodeLabelEl.textContent = formatPeriode(periode);
+
+    renderSummary(dataPeriode);
+
+    renderTable(dataPeriode);
+}
+
+
+// ============================================================
+// 15. PROSES UTAMA DASHBOARD
+// ============================================================
+
+async function initializeDashboard() {
+
+    if (!supabaseClient) {
+
+        tampilkanPesan("Supabase belum berhasil diinisialisasi.");
+
+        performanceStatusEl.textContent = "Koneksi gagal";
+
+        return;
+    }
+
+    refreshBtn.disabled = true;
+    refreshBtn.textContent = "Memuat Data...";
+
+    tampilkanPesan("Menghubungkan ke database Supabase...");
+
+    try {
+
+        // Ambil data pegawai
+        await loadEmployee();
+
+        // Ambil seluruh data KPI
+        const dataKPI = await loadAllKPI();
+
+        // Buat daftar periode
+        loadPeriode(dataKPI);
+
+        // Tampilkan dashboard
+        updateDashboard(dataKPI);
+
+        console.log("Dashboard KPI berhasil dimuat.");
+        console.log("Jumlah data KPI:", dataKPI.length);
+
+    } catch (error) {
+
+        console.error("Dashboard Error:", error);
+
+        tampilkanPesan(error.message);
+
+        performanceStatusEl.textContent = "Terjadi kesalahan";
+
+    } finally {
+
+        refreshBtn.disabled = false;
+        refreshBtn.textContent = "Muat Ulang Data";
+    }
+}
+
+
+// ============================================================
+// 16. EVENT LISTENER
+// ============================================================
+
+// Ketika periode berubah
+periodeSelect.addEventListener("change", async function() {
+
+    refreshBtn.disabled = true;
+
+    try {
+
+        // Data KPI disimpan selama sesi halaman
+        // Muat ulang dari database agar data selalu terbaru
+        const dataKPI = await loadAllKPI();
+
+        updateDashboard(dataKPI);
+
+    } catch (error) {
+
+        console.error(error);
+        tampilkanPesan(error.message);
+
+    } finally {
+
+        refreshBtn.disabled = false;
+    }
+});
+
+
+// Tombol muat ulang
+refreshBtn.addEventListener("click", function() {
+
+    initializeDashboard();
+
+});
+
+
+// ============================================================
+// 17. JALANKAN DASHBOARD
+// ============================================================
+
+initializeDashboard();
+	  
